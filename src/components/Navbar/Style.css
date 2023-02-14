@@ -1,0 +1,33 @@
+body{
+    margin: 0px;
+}
+.container{
+    background-color: rgb(30, 30, 30);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 80px;
+    padding-right: 40px;
+}
+
+.contents{
+    width: 200px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+
+.signin-button{
+    background-color: rgb(239, 67, 95);
+    color: white;
+    border: none;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    cursor: pointer;
+}
