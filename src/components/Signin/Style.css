@@ -27,10 +27,19 @@
     justify-content: center;
     align-items: center;
     width: 200px;
-    border-right: 1px solid pink;
     border-bottom: 1px solid pink;
     height: 46px;
     cursor: pointer;
+}
+.signinG{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    border-bottom: 1px solid pink;
+    height: 46px;
+    cursor: pointer;;
+    background-color: rgb(238, 238, 238);
 }
 .sign-container{
     display: flex;
@@ -43,11 +52,12 @@
 }
 .field{
     border: 1px solid rgb(217, 216, 216);
-    width: 80%;
-    height: 36px;
+    width: 90%;
+    height: 40px;
     border-radius: 5px;
-    margin: 10px 0px 10px 0px;
+    margin: 6px 0px;
     outline: none;
+    padding: 2px 6px;
 }
 .input-area{
     display: flex;
@@ -55,16 +65,17 @@
     justify-content: center;
     align-items: center;
     margin: 40px 0px 40px 0px;
-    padding-bottom: 20px;
+    padding: 6px 16px 20px 16px;
 }
 .in-button{
     background-color: rgb(244, 133, 152);
     border: none;
     color: white;
-    height: 30px;
-    width: 80%;
+    height: 40px;
+    width: 94%;
     font-size: medium;
     border-radius: 5px;
     margin: 10px 0px 5px 0px;
+    padding: 2px 6px;
     cursor: pointer;
 }
