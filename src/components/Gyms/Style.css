@@ -1,0 +1,94 @@
+
+.topBar{
+    background-color: rgba(167, 167, 167, 0.295);
+    height: 60px;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+.info{
+    max-width: 210px;
+    width: 100%;
+    margin: 0px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0px 2px 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 2px 6px 2px rgba(125, 125, 125, 0.25);
+    border-radius: 5px;
+}
+.card-name{
+    font-size: 12px;
+    font-weight: 500;
+}
+.card-content{
+    color: rgb(75, 75, 75);
+    font-size: 10px;
+}
+.search-button{
+    border:1px solid #949494 ;
+    width: 100%;
+    max-width: 280px;
+    height: 40px;
+    padding: 0px 12px;
+    border-radius: 5px;
+    cursor:text;
+    outline: none;
+}
+.card-container{
+    padding: 20px 30px;
+}
+.card-header{
+    font-size: 20px;
+}
+.gymCard{
+    margin-top: 20px;
+    width: 100%;
+    max-width: 240px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px;
+    box-shadow: 0px 2px 6px 2px rgba(125, 125, 125, 0.25);
+    border-radius: 10px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://media.istockphoto.com/id/1131136362/photo/cardio-workout-on-a-treadmill.jpg?b=1&s=170667a&w=0&k=20&c=zUEmCXymIPBcwvy26g1v65ZVYek61f_XlCanrVtuy2U=);
+    cursor: pointer;
+    transition: .5s;
+}
+.gymCard:hover {
+    transform: scale(0.9);
+    background-color: rgba(223, 223, 223, 0.8);
+
+}
+.written{
+    display: flex;
+    flex-direction: column;
+    color: rgb(228, 228, 228);
+}
+.name{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    font-weight: 600;
+    font-size: 18px;
+}
+.cards{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.map{
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+}
+.flex-container{
+    display: flex;
+    flex-direction: row;
+}
