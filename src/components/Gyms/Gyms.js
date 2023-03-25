@@ -1,11 +1,23 @@
 import './Style.css';
 import GymCard from './GymCard';
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom';
+import { getGyms } from '../../api/index';
 import SimpleMap from './SimpleMap'
-import {GoogleMap, userLoadScript, Marker} from '@react-google-maps/api';
+import { GoogleMap, userLoadScript, Marker } from '@react-google-maps/api';
 
 const Gyms = () => {
 
+    const [gyms, setGyms] = useState([]);
+
+    useEffect(() => {
+        getGyms().then((res) => {
+            setGyms(res.data);
+            console.log(gyms);
+        }).catch((error) => {
+            console.log(error);
+        })
+    })
 
     return (
         <div className='gyms-container'>
@@ -32,19 +44,33 @@ const Gyms = () => {
                 </div>
                 <input type='text' className='search-button' placeholder='Search' />
             </div>
-            <div className='flex-container'>
-                <div className='card-container'>
-                    <div className='card-header'>Gyms</div>
-                    <div className='cards'>
-                        <GymCard />
-                        <GymCard />
-                        <GymCard />
-                    </div>
-                </div>
-                <div className='map'>
-                    
-                </div>
+            <div className='add-gym'>
+                <div className='card-header'>Gyms</div>
+                <NavLink to='/addgyms'>
+                    <button className='button-container'>Add Your Gyms</button>
+                </NavLink>
             </div>
+                <div className='card-container'>
+                    {gyms.map((gym) => (
+                        <div className='gymCard' key={gym.id} >
+                            <div className='written'>
+                                <div className='name'>{gym.name}</div>
+                                <div className='about'>{gym.description}</div>
+                            </div>
+                        </div>
+
+                    ))}
+                </div>
+                {/* <div className='card-container'>
+                        {gyms.map((gym) => (
+                            <div className='gymCard' key={gym.id}>
+                                <div className='written'>
+                                    <div className='name'>Name</div>
+                                    <div className='about'>desc</div>
+                                </div>
+                            </div>
+                        ))}
+                </div> */}
         </div>
     )
 }
