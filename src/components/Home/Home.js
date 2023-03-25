@@ -2,6 +2,7 @@ import './Style.css';
 import homeimg from './dumbell.gif';
 import ReactSpeedometer from "react-d3-speedometer"
 import React,{useState} from 'react'
+import {NavLink} from 'react-router-dom'
 
 const Home = () => {
   const [data,setData] = useState({weight:0,height:0,age:0,bmi:0});
@@ -18,7 +19,9 @@ const Home = () => {
         <div className='top'>
           <div className='heading'>Find the Nearest Gym - Your Ultimate Guide to Fitness Centers.</div>
           <div className='intro'>Looking for a gym that's convenient and close to your location? Look no further cuz we provide a comprehensive guide to finding the nearest gym to you</div>
-          <button className='bmi-cal'>Find The Nearest Gyms</button>
+          <NavLink to='/gyms'>
+            <button className='bmi-cal'>Find The Nearest Gyms</button>
+          </NavLink>
         </div>
         <div className='center-container'>
           <div className='block1'>
