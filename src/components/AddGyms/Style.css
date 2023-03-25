@@ -1,0 +1,86 @@
+.addgyms-main{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gym-addform{
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 30px 20px 30px;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.12);
+}
+.input-fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+    gap: 20px;
+}
+.input-box{
+    max-width: 500px;
+    height: 26px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    padding: 0px 2px;
+}
+.details{
+    margin: 10px 0px;
+    font-size: 30px;
+    color: #3b3b3b;
+}
+.time{
+    width: 40px;
+    size: 2;
+    outline: none;
+    height: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+
+}
+.skills{
+    padding:12px 6px 12px 6px;
+    max-width: 150px;
+    width: 100%;
+    margin: 0px 4px 0px 4px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid rgba(26, 14, 14, 0.12);
+    border-radius: 6px;
+}
+.input{
+    display: flex;
+    justify-content: center;
+}
+.txt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.select{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.time-input{
+    display: flex;
+    justify-content: center;
+}
+.txte{
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}
+.pics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
