@@ -11,11 +11,15 @@ const AddGyms = () => {
     const [closehrs, setclosehrs] = useState(0);
     const [closemin, setcloseMin] = useState(0);
     const [next, setNext] = useState(false);
-
+    const [slotData, setSlotData] = useState([]);
+    // const [slotData, setSlotData] = useState({slot_timing:'',current_cap:0,max_cap:0});
     const [tagData, setTagData] = useState([]);
+    const colors = ['#F5B452','#277C54','#5F55D0','#F55252'];
+
     const addTagData = (e) => {
         if (e.target.value !== '') {
             setTagData([...tagData, e.target.value]);
+            setSlotData([...slotData,{slot_timing:e.target.value,current_cap:'',max_cap:''}])
             e.target.value = '';
         }
     };
@@ -24,26 +28,45 @@ const AddGyms = () => {
         setTagData([...tagData.filter((_, index) => index !== indexToRemove)]);
     };
 
-    const handleSubmit = (e) => {
+    const addCurrentTimes = (e, index) => {
+        // this.state.slotData[index].current_cap=e.target.value;
+        // this.force.update;
+        // this.setState(prevState => ({
+        //     slotData: {
+        //         ...prevState.slotData,
+        //         [prevState.slotData[index].current_cap]: e.target.value,
+        //     },
+        // }));
+        let items=[...this.state.slotData]
+        let item={...slotData[index]}
+        item.current_cap=e.target.value;
+        items[index]=item;
+        this.setState({items});
+        console.log(item);
+
+    }
+
+    const handleSubmit = async (e) => {
         gym.open_time = openhrs * 100 + openmin;
         gym.close_time = closehrs * 100 + closemin;
         console.log(gym)
         setGym({ ...gym, price: Number(gym.price) });
-        createGym(gym).then((res) => {
+        await createGym(gym).then((res) => {
             console.log(res)
+            setGym({ email: '', name: '', open_time: 0, close_time: 0, price: 0, about: '', address: '', description: '', skill: '', exercise: '' });
+            setopenhrs(0);
+            setopenMin(0);
+            setclosehrs(0);
+            setcloseMin(0);
+            setNext(true);
         }).catch((err) => {
             console.log(err)
         })
-        setGym({ email: '', name: '', open_time: 0, close_time: 0, price: 0, about: '', address: '', description: '', skill: '', exercise: '' });
-        setopenhrs(0);
-        setopenMin(0);
-        setclosehrs(0);
-        setcloseMin(0);
-        setNext(true);
+
     }
 
     const handleSlots = (e) => {
-        
+
     }
 
     // const base64toblob = (dataURI) => {
@@ -102,7 +125,7 @@ const AddGyms = () => {
                                         <option>Skill Level</option>
                                         <option>Beginner</option>
                                         <option>Moderate</option>
-                                        <option>Proffesional</option>
+                                        <option>Proffesional</option>const [slotData, setSlotData]
                                     </select>
                                 </div>
                                 <div className='input'>
@@ -119,38 +142,52 @@ const AddGyms = () => {
                                 <FileBase id='pics' type='file' multiple={false} onDone={({ base64 }) => setGym({ ...gym, selectedFile: base64 })}></FileBase>
                             </div>
                         </div>
-                        <button className='register' style={{ "width": "50%" }} onClick={handleSubmit}>Next</button>
+                        <div className='slotAdd'>
+                            <div className='add-tag'>
+                                     <ul className="tags">
+                                     {tagData.map((tag, index) => (
+                                            <li key={index} className="tag">
+                                                <span className="tag-title">{tag}</span>
+                                                <span
+                                                    className="tag-close-icon"
+                                                    onClick={() => removeTagData(index)}
+                                                >
+                                                    x
+                                                </span>
+                                            </li>
+                                    ))}
+                                    </ul>
+
+                                    <input className='input-box'
+                                        type="text"
+                                        onKeyUp={event => (event.key === 'Enter' ? addTagData(event) : null)}
+                                        placeholder="Press enter to add a time slot"
+                                    />
+                                </div>
+
+                        </div> 
+                        <button className='register' style={{ "width": "50%" }} onClick={handleSubmit}>Register</button>
                     </div>
                 </div>
 
                 :
-
-                <div className='slotAdd'>
-                    <div className='add-tag'>
-                        <div className="tag-input">
-                            <ul className="tags">
-                                {tagData.map((tag, index) => (
-                                    <li key={index} className="tag">
-                                        <span className="tag-title">{tag}</span>
-                                        <span
-                                            className="tag-close-icon"
-                                            onClick={() => removeTagData(index)}
-                                        >
-                                            x
-                                        </span>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <input
-                                type="text"
-                                onKeyUp={event => (event.key === 'Enter' ? addTagData(event) : null)}
-                                placeholder="Press enter to add a time slot"
-                            />
+                <div className='main'>
+                <div className='slotData'>
+                     {slotData.map((slot, index)=>(
+                        <div className='slot-addform' key={index}>
+                            <div className='cardTop' style={{backgroundColor:colors[index%4]}}>
+                                <div className='batch-name'>Batch <span>{index+1}</span></div>
+                                <div className='time-map'>{slot.slot_timing}</div>
+                            </div>
+                            <div className='cardBottom'>
+                                <input type='number' className='slot-input'placeholder='Current Capacity' value={slot.current_cap?slot.current_cap:''} onChange={(e)=>addCurrentTimes(e,index)}/>
+                                <input type='number' className='slot-input'placeholder='Maximum Capacity' value={slot.max_cap?slot.max_cap:''} onChange={(e)=>setSlotData([...slotData[index], {max_cap: e.target.value}])}/>
+                            </div>
                         </div>
-                    </div>
-                    <button className='register' style={{ "width": "50%" }} onClick={handleSlots}>Register</button>
+                    ))} 
+
                 </div>
+            </div>
             }
         </>
 
